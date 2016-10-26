@@ -1,14 +1,7 @@
-casper.userAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X)')
-casper.start 'http://casperjs.org', ->
-  @.viewport(1024, 768);
-  @.thenClick('.dropdown-toggle')
+casper.start 'https://www.codeship.io/', ->
+  @.clickLabel 'Blog', 'a' 
   @.then ->
-    @.clickLabel 'Tester API'
-  @.then ->
-    @.clickLabel 'Extending'
-  @.then ->
-    @.test.assertUrlMatch 'http://casperjs.org/extending.html'
-    @.capture 'test.png'
- 
+    @.test.assertUrlMatch 'http://blog.codeship.io'
+
 casper.run ->
   @.test.done(1)
