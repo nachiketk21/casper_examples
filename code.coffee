@@ -1,12 +1,9 @@
-casper.start 'http://translate.google.com/', ->
-  @.sendKeys('#source', 'Guten Tag');
+casper.start 'http://www.google.com/', ->
+ 
   @.then ->
-    @.click '#gt-submit'
-  @.waitForText('Good day')
-  @.then ->
-    @.test.assertSelectorHasText '#result_box', 'Good day'
-  @.then ->
-    @.capture 'output.png'
+    @.echo 'Foobar'
+    @.test.assertTitle 'Google', 'google has the correct title'
+  
  
 casper.run ->
-  @.test.done(1)
+  @.exit()
