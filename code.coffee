@@ -1,7 +1,12 @@
-casper.start 'https://www.codeship.io/', ->
-  @.clickLabel 'Blog', 'a' 
+casper.start 'http://translate.google.com/', ->
+  @.sendKeys('#source', 'Guten Tag');
   @.then ->
-    @.test.assertUrlMatch 'http://blog.codeship.io'
-
+    @.click '#gt-submit'
+  @.waitForText('Good day')
+  @.then ->
+    @.test.assertSelectorHasText '#result_box', 'Good day'
+  @.then ->
+    @.capture 'output.png'
+ 
 casper.run ->
   @.test.done(1)
